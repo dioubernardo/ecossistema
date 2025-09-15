@@ -18,10 +18,10 @@ services:
       - ./traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
       - ./letsencrypt:/letsencrypt
     labels:
-      - "traefik.enable=${DESENVOLVIMENTO}"
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard.${DOMINIO}`)"
-      - "traefik.http.routers.dashboard.entrypoints=websecure"
-      - "traefik.http.routers.dashboard.service=api@internal"
+      traefik.enable: ${DESENVOLVIMENTO}
+      traefik.http.routers.dashboard.rule: Host(`dashboard.${DOMINIO}`)
+      traefik.http.routers.dashboard.entrypoints: websecure
+      traefik.http.routers.dashboard.service: api@internal
 
   sistemas:
     image: nginx:alpine
@@ -30,9 +30,9 @@ services:
     volumes:
       - ./html/servico1:/usr/share/nginx/html:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.sistemas.rule=Host(`sistemas.${DOMINIO}`)"
-      - "traefik.http.routers.sistemas.entrypoints=websecure"
+      traefik.enable: true
+      traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO}`)
+      traefik.http.routers.sistemas.entrypoints: websecure
 
   psvo:
     image: nginx:alpine
@@ -41,10 +41,10 @@ services:
     volumes:
       - ./html/servico2:/usr/share/nginx/html:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.psvo.rule=Host(`psvo.${DOMINIO}`)"
-      - "traefik.http.routers.psvo.entrypoints=websecure"
-      - "traefik.http.routers.psvo.middlewares=spa-fallback@file,secure-headers@file"
+      traefik.enable: true
+      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
+      traefik.http.routers.psvo.entrypoints: websecure
+      traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
       
   ava:
     image: nginx:alpine
@@ -54,6 +54,6 @@ services:
     volumes:
       - ./html/servico2:/usr/share/nginx/html:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ava.rule=Host(`ava.${DOMINIO}`)"
-      - "traefik.http.routers.ava.entrypoints=websecure"
+      traefik.enable: true
+      traefik.http.routers.ava.rule: Host(`ava.${DOMINIO}`)
+      traefik.http.routers.ava.entrypoints: websecure
