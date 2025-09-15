@@ -15,6 +15,9 @@
 - remover o .env
 - testar branchs diferentes nas apliações
 - pensar onde está o build 
+- pensar volumes vs imagens
+- node com autoreload no dev e statico no prod/homolog
+- includes https://docs.docker.com/reference/compose-file/include/
 
 # Para desenvolvimento incluir no hosts
 
