@@ -10,6 +10,12 @@
 - Autenticação centralizada
 - Autoatualização
 
+# TODO
+
+- remover o .env
+- testar branchs diferentes nas apliações
+- pensar onde está o build 
+
 # Para desenvolvimento incluir no hosts
 
 ```
