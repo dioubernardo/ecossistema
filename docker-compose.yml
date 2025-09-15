@@ -8,6 +8,9 @@ services:
       - "192.168.3.220:80:80/tcp" 
       - "192.168.3.220:443:443/tcp"
       - "192.168.3.220:443:443/udp"
+      - "[::]:80:80/tcp" 
+      - "[::]:443:443/tcp"
+      - "[::]:443:443/udp"
       # possibilita que seja descrito no compose o ip de cada serviço
       # para o caso de mais de um ecosistema subir no mesmo host cada um com seu proxy
     env_file:
