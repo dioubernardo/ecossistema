@@ -13,8 +13,6 @@ services:
       - "${IPV6}:443:443/udp"
       # possibilita que seja descrito no compose o ip de cada serviço
       # para o caso de mais de um ecosistema subir no mesmo host cada um com seu proxy
-    env_file:
-      - .env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik.yml:/etc/traefik/traefik.yml
