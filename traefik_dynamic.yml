@@ -1,0 +1,16 @@
+http:
+  middlewares:
+    # Middleware para SPAs (Angular/React/Vue)
+    spa-fallback:
+      replacePathRegex:
+        regex: ^/(.*)
+        replacement: /index.html
+
+    # Exemplo: adicionar headers de segurança
+    secure-headers:
+      headers:
+        contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+        referrerPolicy: "no-referrer"
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true

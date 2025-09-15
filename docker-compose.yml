@@ -1,0 +1,63 @@
+services:
+
+  proxy:
+    image: traefik:v3.0
+    container_name: proxy
+    restart: unless-stopped
+    ports:
+      - "192.168.3.220:80:80/tcp" 
+      - "192.168.3.220:443:443/tcp"
+      - "192.168.3.220:443:443/udp"
+      # possibilita que seja descrito no compose o ip de cada serviço
+      # para o caso de mais de um ecosistema subir no mesmo host cada um com seu proxy
+    env_file:
+      - .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - ./traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
+      - ./letsencrypt:/letsencrypt
+    labels:
+      - "traefik.enable=${DESENVOLVIMENTO}"
+      - "traefik.http.routers.dashboard.rule=Host(`dashboard.${DOMINIO}`)"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.service=api@internal"
+
+  sistemas:
+    image: nginx:alpine
+    container_name: sistemas
+    restart: unless-stopped
+    volumes:
+      - ./html/servico1:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sistemas.rule=Host(`sistemas.${DOMINIO}`)"
+      - "traefik.http.routers.sistemas.entrypoints=websecure"
+
+  psvo:
+    image: nginx:alpine
+    container_name: psvo
+    restart: unless-stopped
+    volumes:
+      - ./html/servico2:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.psvo.rule=Host(`psvo.${DOMINIO}`)"
+      - "traefik.http.routers.psvo.entrypoints=websecure"
+      - "traefik.http.routers.psvo.middlewares=spa-fallback@file,secure-headers@file"
+      
+  ava:
+    image: nginx:alpine
+    container_name: ava
+    restart: unless-stopped
+    profiles: [ava]
+    volumes:
+      - ./html/servico2:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ava.rule=Host(`ava.${DOMINIO}`)"
+      - "traefik.http.routers.ava.entrypoints=websecure"
+
+secrets:
+  server-certificate:
+    file: ./letsencrypt/acme.json
