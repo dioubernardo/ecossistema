@@ -1,11 +1,11 @@
+# stage para desenvolvimento
 FROM node:latest
 
 WORKDIR /app
 
-# instalando para construir o ambiente
-COPY package*.json ./
+COPY ./app/package*.json ./
 RUN npm install
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]

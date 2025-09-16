@@ -5,23 +5,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    profiles: [dev]
+    profiles: [develop]
     restart: unless-stopped
     volumes:
-      - .:/app
+      - ./app:/app
       - /app/node_modules
     labels:
       traefik.enable: true
       traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
       traefik.http.routers.psvo.entrypoints: websecure
-      traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
+      traefik.http.routers.psvo.middlewares: "secure-headers@file"
+      traefik.http.services.psvo.loadbalancer.server.port: 3000
 
   psvo:
     container_name: psvo
     build:
       context: .
       dockerfile: Dockerfile.prod
-    profiles: [homolog,prod]
+    profiles: [release, main]
     restart: unless-stopped
     volumes:
       - /app/node_modules
@@ -29,7 +30,7 @@ services:
       traefik.enable: true
       traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
       traefik.http.routers.psvo.entrypoints: websecure
-      traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
+      traefik.http.routers.psvo.middlewares: "secure-headers@file"
 
 volumes:
   node_modules:
