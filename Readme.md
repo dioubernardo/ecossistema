@@ -12,7 +12,6 @@
 
 # TODO
 
-- exposedbydefault = false
 - remover o .env
 - testar branchs diferentes nas apliações
 - pensar onde está o build 

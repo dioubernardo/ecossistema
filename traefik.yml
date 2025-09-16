@@ -18,7 +18,8 @@ entryPoints:
     http3: {}
 
 providers:
-  docker: {}
+  docker:
+    exposedByDefault: false
   file:
     filename: /etc/traefik/traefik_dynamic.yml
     watch: true
