@@ -1,0 +1,14 @@
+# aqui deria ser dois stages um build e outro serv
+# no build faz o build e no server roda nginx
+# porem no teste deixei igual ao dev pois não é uma SPA buildada e sim um simples Express APP
+FROM node:22-alpine
+
+WORKDIR /app
+
+# instalando para construir o ambiente
+COPY package*.json .
+RUN npm install --no-update-notifier
+
+EXPOSE 80
+
+CMD ["npm", "serve"]

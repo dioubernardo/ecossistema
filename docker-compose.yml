@@ -29,32 +29,23 @@ services:
     container_name: sistemas
     restart: unless-stopped
     volumes:
-      - ./html/servico1:/usr/share/nginx/html:ro
+      - ./services/sistemas/src:/usr/share/nginx/html:ro
     labels:
       traefik.enable: true
       traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO}`)
       traefik.http.routers.sistemas.entrypoints: websecure
 
-  psvo:
-    image: nginx:alpine
-    container_name: psvo
-    restart: unless-stopped
-    volumes:
-      - ./html/servico2:/usr/share/nginx/html:ro
-    labels:
-      traefik.enable: true
-      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
-      traefik.http.routers.psvo.entrypoints: websecure
-      traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
-      
   ava:
     image: nginx:alpine
     container_name: ava
     restart: unless-stopped
     profiles: [ava]
     volumes:
-      - ./html/servico2:/usr/share/nginx/html:ro
+      - ./services/ava/src:/usr/share/nginx/html:ro
     labels:
       traefik.enable: true
       traefik.http.routers.ava.rule: Host(`ava.${DOMINIO}`)
       traefik.http.routers.ava.entrypoints: websecure
+
+include:
+  - ./services/psvo/docker-compose.yml

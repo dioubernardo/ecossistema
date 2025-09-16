@@ -1,0 +1,16 @@
+{
+  "name": "psvo",
+  "version": "1.0.0",
+  "description": "Exemplo SPA",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch src/index.js",
+    "serve": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

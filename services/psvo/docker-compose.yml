@@ -1,0 +1,35 @@
+services:
+
+  psvo-dev:
+    container_name: psvo-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+ #   profiles: [dev]
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+   # labels:
+   #   traefik.enable: true
+   #   traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
+   #   traefik.http.routers.psvo.entrypoints: websecure
+   #   traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
+
+  psvo:
+    container_name: psvo
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    profiles: [homolog,prod]
+    restart: unless-stopped
+    volumes:
+      - /app/node_modules
+#    labels:
+#      traefik.enable: true
+#      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
+#      traefik.http.routers.psvo.entrypoints: websecure
+#      traefik.http.routers.psvo.middlewares: "spa-fallback@file,secure-headers@file"
+
+volumes:
+  node_modules:

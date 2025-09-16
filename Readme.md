@@ -1,7 +1,7 @@
 # Premissas
 
 - ✓ Autocontido 
-- ✓ Desenvolvimento/Homologação/Produção mesmo - projeto (faltam algumas definições)
+- ✓ Desenvolvimento/Homologação/Produção juntos (faltam algumas definições)
 - ✓ Controle dos IPs (para o processo de transição mas pode ser descartado)
 - ✓ Controle dos certificados SSL automático 
 - ✓ Possibilidade de subir por blocos
@@ -12,6 +12,7 @@
 
 # TODO
 
+- exposedbydefault = false
 - remover o .env
 - testar branchs diferentes nas apliações
 - pensar onde está o build 
