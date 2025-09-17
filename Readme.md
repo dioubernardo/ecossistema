@@ -12,11 +12,10 @@
 
 # TODO
 
-- remover o .env
 - testar branchs diferentes nas apliações
 - pensar onde está o build 
 - pensar volumes vs imagens
-- https://docs.docker.com/reference/compose-file/build/#additional_contexts
+    - https://docs.docker.com/reference/compose-file/build/#additional_contexts
 
 # Para desenvolvimento incluir no hosts
 
@@ -25,6 +24,25 @@
 192.168.3.220 sistemas.local
 192.168.3.220 psvo.local
 192.168.3.220 ava.local
+```
+
+# Configurações
+
+Usar como base o .env.exemplo
+```
+copy .env.exemplo .env
+```
+
+# Para rodar
+
+Execução normal
+```
+docker compose up -d
+```
+
+Execução de profiles não daemon
+```
+docker compose --profile tests up
 ```
 
 # Servidor de testes requisitos
