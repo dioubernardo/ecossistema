@@ -1,0 +1,14 @@
+services:
+
+  autodeployer:
+    container_name: autodeployer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ../../.env
+    restart: unless-stopped
+    profiles: ["manual"]
+    volumes:
+      - ../../:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
