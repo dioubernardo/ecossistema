@@ -1,4 +1,4 @@
-# stage para desenvolvimento
+# stage base
 FROM node:latest AS node-base
 
 WORKDIR /app
