@@ -4,7 +4,8 @@ services:
     container_name: psvo-dev
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+      target: ${TARGET}
     profiles: [develop]
     restart: unless-stopped
     volumes:
@@ -17,11 +18,24 @@ services:
       traefik.http.routers.psvo.middlewares: "secure-headers@file"
       traefik.http.services.psvo.loadbalancer.server.port: 3000
 
+  psvo-test:
+    container_name: psvo-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    profiles: [manual]
+    restart: no
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+
   psvo:
     container_name: psvo
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
+      target: ${TARGET}
     profiles: [release, main]
     restart: unless-stopped
     volumes:

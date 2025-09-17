@@ -40,9 +40,9 @@ Execução normal
 docker compose up -d
 ```
 
-Execução de profiles não daemon
+Execução de baterias de teste ou outros scripts manuais
 ```
-docker compose --profile tests up
+docker compose --profile manual run --rm psvo-test
 ```
 
 # Servidor de testes requisitos
