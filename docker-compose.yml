@@ -24,28 +24,7 @@ services:
       traefik.http.routers.dashboard.entrypoints: websecure
       traefik.http.routers.dashboard.service: api@internal
 
-  sistemas:
-    image: nginx:alpine
-    container_name: sistemas
-    restart: unless-stopped
-    volumes:
-      - ./services/sistemas/src:/usr/share/nginx/html:ro
-    labels:
-      traefik.enable: true
-      traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO}`)
-      traefik.http.routers.sistemas.entrypoints: websecure
-
-  ava:
-    image: nginx:alpine
-    container_name: ava
-    restart: unless-stopped
-    profiles: [ava]
-    volumes:
-      - ./services/ava/src:/usr/share/nginx/html:ro
-    labels:
-      traefik.enable: true
-      traefik.http.routers.ava.rule: Host(`ava.${DOMINIO}`)
-      traefik.http.routers.ava.entrypoints: websecure
-
 include:
-  - ./services/psvo/docker-compose.yml
+  - ./services/sistemas/docker-compose.yml
+  - ./services/psvo/docker-compose.yml  
+  - ./services/ava/docker-compose.yml

@@ -1,0 +1,13 @@
+services:
+
+  ava:
+    image: nginx:alpine
+    container_name: ava
+    restart: unless-stopped
+    profiles: [ava]
+    volumes:
+      - ./src:/usr/share/nginx/html:ro
+    labels:
+      traefik.enable: true
+      traefik.http.routers.ava.rule: Host(`ava.${DOMINIO}`)
+      traefik.http.routers.ava.entrypoints: websecure

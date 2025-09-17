@@ -1,0 +1,12 @@
+services:
+
+  sistemas:
+    image: nginx:alpine
+    container_name: sistemas
+    restart: unless-stopped
+    volumes:
+      - ./src:/usr/share/nginx/html:ro
+    labels:
+      traefik.enable: true
+      traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO}`)
+      traefik.http.routers.sistemas.entrypoints: websecure

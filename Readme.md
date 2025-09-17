@@ -16,6 +16,7 @@
 - testar branchs diferentes nas apliações
 - pensar onde está o build 
 - pensar volumes vs imagens
+- https://docs.docker.com/reference/compose-file/build/#additional_contexts
 
 # Para desenvolvimento incluir no hosts
 
@@ -58,3 +59,6 @@ sudo reboot
 
 ## Referências
 - https://doc.traefik.io/traefik/getting-started/docker/
+
+## Memórias
+- Tive que mexer no DNS do docker porque não estava rodando npm install
