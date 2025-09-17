@@ -1,3 +1,3 @@
 export default function App() {
-  return "PSVO SPA React APP";
+  return "PSVO SPA React APP ☘";
 }
