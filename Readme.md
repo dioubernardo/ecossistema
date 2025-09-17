@@ -44,6 +44,10 @@ Execução de baterias de teste ou outros scripts manuais
 ```
 docker compose --profile manual run --rm psvo-test
 ```
+Rodar o autodeploy
+```
+docker compose up autodeployer -d
+```
 
 # Servidor de testes requisitos
 
