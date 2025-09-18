@@ -60,7 +60,7 @@ sudo systemctl start cron
 
 echo "*/5 * * * * root $(pwd)/autodeploy.sh >> /var/log/autodeploy.log 2>&1" | sudo tee -a /etc/crontab
 ```
-Houve uma tentativa via container que estava OK porem com problema no docker compose up, por rodar no contexto do container e não no host 
+Houve uma tentativa via container que estava OK porem com problema no docker compose up, por rodar no contexto do container e não no host https://github.com/dioubernardo/ecossistema/commit/2e50ef64cb617c7977cbcc2192770f75ab1f66bc
 
 # Servidor de testes requisitos
 
