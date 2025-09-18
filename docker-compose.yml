@@ -28,7 +28,6 @@ services:
       traefik.http.routers.dashboard.service: api@internal
 
 include:
-  - ./services/autodeployer/docker-compose.yml
   - ./services/sistemas/docker-compose.yml
   - ./services/psvo/docker-compose.yml  
   - ./services/ava/docker-compose.yml

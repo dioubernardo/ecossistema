@@ -7,12 +7,15 @@
 - ✓ Possibilidade de subir por blocos
 - ✓ Suporte a Single Page Application
 - ✓ HTTP3 (falta testar, mas está anuncionado)
-- Autenticação centralizada
 - Autoatualização
+- Autenticação centralizada
+- Logs
 
 # TODO
 
+- Permissão dos arquivos no autodeploy
 - testar branchs diferentes nas apliações
+
 - pensar onde está o build 
 - pensar volumes vs imagens
     - https://docs.docker.com/reference/compose-file/build/#additional_contexts
@@ -44,10 +47,20 @@ Execução de baterias de teste ou outros scripts manuais
 ```
 docker compose --profile manual run --rm psvo-test
 ```
-Rodar o autodeploy
+
+# Autodeploy
+
 ```
-docker compose up autodeployer -d
+cd ecosistema 
+chmod +x autodeploy.sh
+
+sudo apt install cron
+sudo systemctl enable cron
+sudo systemctl start cron
+
+echo "*/5 * * * * root $(pwd)/autodeploy.sh >> /var/log/autodeploy.log 2>&1" | sudo tee -a /etc/crontab
 ```
+Houve uma tentativa via container que estava OK porem com problema no docker compose up, por rodar no contexto do container e não no host 
 
 # Servidor de testes requisitos
 
