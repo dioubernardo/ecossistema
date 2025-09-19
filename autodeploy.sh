@@ -30,6 +30,8 @@ else
         echo $LOCAIS_MODIFICADOS
     else
         git pull && \
+        git submodule init && \
+        git submodule update --remote && \
         docker compose pull && \
         docker compose build --pull && \
         docker compose up -d --remove-orphans
