@@ -13,10 +13,11 @@
 
 # TODO
 
+- timezone
+- agendador-tarefas não funciona com dominios inválidos
 - Permissão dos arquivos no autodeploy
-- testar branchs diferentes nas apliações
+- testar branchs diferentes nas aplicações
 
-- pensar onde está o build 
 - pensar volumes vs imagens
     - https://docs.docker.com/reference/compose-file/build/#additional_contexts
 
@@ -45,8 +46,11 @@ docker compose up -d
 
 Execução de baterias de teste ou outros scripts manuais
 ```
-docker compose --profile manual run --rm psvo-test
+docker compose run --rm psvo-test
 ```
+Obs: isso pode sofrer mudanças no conceito quem sabe o npm install possa sair do build para o 
+running time com isso que está testando posso modificar o package.json e não precisa lembrar de
+dar o build antes de rodar.
 
 # Autodeploy
 

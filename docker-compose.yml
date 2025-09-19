@@ -31,3 +31,4 @@ include:
   - ./services/sistemas/docker-compose.yml
   - ./services/psvo/docker-compose.yml  
   - ./services/ava/docker-compose.yml
+  - ./services/agendador-tarefas/docker-compose.yml
