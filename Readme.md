@@ -48,9 +48,6 @@ Execução de baterias de teste ou outros scripts manuais
 ```
 docker compose run --rm psvo-test
 ```
-Obs: isso pode sofrer mudanças no conceito quem sabe o npm install possa sair do build para o 
-running time com isso que está testando posso modificar o package.json e não precisa lembrar de
-dar o build antes de rodar.
 
 # Autodeploy
 

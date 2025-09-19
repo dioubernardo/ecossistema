@@ -1,3 +1,10 @@
+# stage para desenvolvimento
+FROM node:latest AS develop
+
+WORKDIR /app
+
+CMD ["sh", "-c", "npm install && npm start"]
+
 # stage base
 FROM node:latest AS node-base
 
@@ -7,11 +14,6 @@ COPY ./app/package*.json ./
 RUN npm install
 
 EXPOSE 3000
-
-# stage para desenvolvimento
-FROM node-base AS develop
-
-CMD ["npm", "start"]
 
 # stage para testes
 FROM node-base AS test
