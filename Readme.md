@@ -14,7 +14,6 @@
 # TODO
 
 - timezone
-- agendador-tarefas não funciona com dominios inválidos
 - Permissão dos arquivos no autodeploy
 - testar branchs diferentes nas aplicações
 
