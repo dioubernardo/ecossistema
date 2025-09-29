@@ -13,6 +13,7 @@
 
 # TODO
 
+- parametros obrigatorios do .env
 - timezone
 - Permissão dos arquivos no autodeploy
 - testar branchs diferentes nas aplicações
