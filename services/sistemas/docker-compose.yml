@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./src:/usr/share/nginx/html:ro
+    hostname: sistemas.${DOMINIO}
     labels:
       traefik.enable: true
       traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO}`)
