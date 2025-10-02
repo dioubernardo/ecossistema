@@ -4,6 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+      target: ${TARGET:?}
     container_name: proxy
     restart: unless-stopped
     ports:
@@ -19,7 +20,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik.yml:/etc/traefik/traefik.yml
       - ./traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
-      - ./letsencrypt:/letsencrypt
+      - ../../certs:/certs
     labels:
       traefik.enable: ${DESENVOLVIMENTO:?}
       traefik.http.routers.dashboard.rule: Host(`dashboard.${DOMINIO:?}`)

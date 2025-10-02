@@ -1,2 +1,4 @@
-services/proxy/letsencrypt/acme.json
+certs/acme.json
+certs/local.key
+certs/local.crt
 .env

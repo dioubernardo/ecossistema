@@ -28,6 +28,6 @@ certificatesResolvers:
   letsencrypt:
     acme:
       email: diou.bernardo@gmail.com
-      storage: /letsencrypt/acme.json
+      storage: /certs/acme.json
       httpChallenge:
         entryPoint: web
