@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: ${TARGET}
+      target: ${TARGET:?}
     profiles: [develop]
     restart: unless-stopped
     volumes:
@@ -13,7 +13,7 @@ services:
       - /app/node_modules
     labels:
       traefik.enable: true
-      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
+      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO:?}`)
       traefik.http.routers.psvo.entrypoints: websecure
       traefik.http.routers.psvo.middlewares: "secure-headers@file"
       traefik.http.services.psvo.loadbalancer.server.port: 3000
@@ -35,14 +35,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: ${TARGET}
+      target: ${TARGET:?}
     profiles: [release, main]
     restart: unless-stopped
     volumes:
       - /app/node_modules
     labels:
       traefik.enable: true
-      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO}`)
+      traefik.http.routers.psvo.rule: Host(`psvo.${DOMINIO:?}`)
       traefik.http.routers.psvo.entrypoints: websecure
       traefik.http.routers.psvo.middlewares: "secure-headers@file"
 

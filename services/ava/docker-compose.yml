@@ -7,8 +7,8 @@ services:
     profiles: [ava]
     volumes:
       - ./src:/usr/share/nginx/html:ro
-    hostname: ava.${DOMINIO}
+    hostname: ava.${DOMINIO:?}
     labels:
       traefik.enable: true
-      traefik.http.routers.ava.rule: Host(`ava.${DOMINIO}`)
+      traefik.http.routers.ava.rule: Host(`ava.${DOMINIO:?}`)
       traefik.http.routers.ava.entrypoints: websecure
