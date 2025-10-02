@@ -1,0 +1,27 @@
+services:
+
+  proxy:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: proxy
+    restart: unless-stopped
+    ports:
+      - "${IPV4}:80:80/tcp" 
+      - "${IPV4}:443:443/tcp"
+      - "${IPV4}:443:443/udp"
+      - "${IPV6}:80:80/tcp" 
+      - "${IPV6}:443:443/tcp"
+      - "${IPV6}:443:443/udp"
+      # possibilita que seja descrito no compose o ip de cada serviço
+      # para o caso de mais de um ecosistema subir no mesmo host cada um com seu proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - ./traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
+      - ./letsencrypt:/letsencrypt
+    labels:
+      traefik.enable: ${DESENVOLVIMENTO:?}
+      traefik.http.routers.dashboard.rule: Host(`dashboard.${DOMINIO:?}`)
+      traefik.http.routers.dashboard.entrypoints: websecure
+      traefik.http.routers.dashboard.service: api@internal

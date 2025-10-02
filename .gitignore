@@ -1,2 +1,2 @@
-letsencrypt/acme.json
+services/proxy/letsencrypt/acme.json
 .env
