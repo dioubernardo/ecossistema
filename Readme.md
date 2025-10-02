@@ -28,10 +28,12 @@
 # Para desenvolvimento incluir no hosts
 
 ```
-192.168.3.220 dashboard.local
-192.168.3.220 sistemas.local
-192.168.3.220 psvo.local
-192.168.3.220 ava.local
+127.0.0.1 dashboard.local
+127.0.0.1 sistemas.local
+127.0.0.1 psvo.local
+127.0.0.1 ava.local
+127.0.0.1 sso.local
+127.0.0.1 ldap.local
 ```
 
 # Configurações
