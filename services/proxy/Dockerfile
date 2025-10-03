@@ -1,4 +1,4 @@
-FROM traefik:v3.0 AS develop
+FROM traefik:v3.5 AS develop
 
 VOLUME /certs
 
@@ -11,5 +11,5 @@ ENTRYPOINT ["/usr/local/bin/mkcert.sh"]
 
 CMD ["traefik"]
 
-FROM traefik:v3.0 AS release
-FROM traefik:v3.0 AS main
+FROM traefik:v3.5 AS release
+FROM traefik:v3.5 AS main

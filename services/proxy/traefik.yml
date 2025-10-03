@@ -1,6 +1,10 @@
 api:
   dashboard: true
 
+log:
+  format: common
+  level: WARN
+
 entryPoints:
   web:
     address: ":80"
