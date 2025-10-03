@@ -1,4 +1,6 @@
 certs/acme.json
 certs/local.key
 certs/local.crt
+certs/rootCA.key
+certs/rootCA.crt
 .env

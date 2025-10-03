@@ -21,6 +21,8 @@ services:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - ./traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
       - ../../certs:/certs
+    environment:
+      DOMINIO: ${DOMINIO:?}
     labels:
       traefik.enable: ${DESENVOLVIMENTO:?}
       traefik.http.routers.dashboard.rule: Host(`dashboard.${DOMINIO:?}`)
