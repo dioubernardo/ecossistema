@@ -13,17 +13,12 @@
 
 # TODO
 
-- parametros obrigatorios do .env
 - timezone
 - Permissão dos arquivos no autodeploy
 - testar branchs diferentes nas aplicações
 
 - pensar volumes vs imagens
     - https://docs.docker.com/reference/compose-file/build/#additional_contexts
-
-- certificado valido para .local
-- dominio interno
-    - https://www.rfc-editor.org/rfc/rfc6761.html
 
 # Instalação do servidor
 
