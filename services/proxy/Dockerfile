@@ -12,4 +12,7 @@ ENTRYPOINT ["/usr/local/bin/mkcert.sh"]
 CMD ["traefik"]
 
 FROM traefik:v3.5 AS release
+
+VOLUME /certs
+
 FROM release AS main
