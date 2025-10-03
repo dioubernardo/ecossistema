@@ -74,15 +74,6 @@ chmod 600 certs
 
 ### Para desenvolvimento incluir no hosts
 
-```
-127.0.0.1 dashboard.localhost.furg.br
-127.0.0.1 sistemas.localhost.furg.br
-127.0.0.1 psvo.localhost.furg.br
-127.0.0.1 ava.localhost.furg.br
-127.0.0.1 sso.localhost.furg.br
-127.0.0.1 ldap.localhost.furg.br
-```
-
 Após executar pela primeira vez será gerado um certificado (certs/rootCA.crt) que deve ser instalado no computador
 
 - Linux: ```sudo cp certs/rootCA.crt /usr/local/share/ca-certificates/ && sudo update-ca-certificates```
