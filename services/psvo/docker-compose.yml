@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: ${TARGET:?}
-    profiles: [develop]
+      target: develop
+    profiles: [frontend-develop]
     restart: unless-stopped
     volumes:
       - ./app:/app
@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: ${TARGET:?}
-    profiles: [release, main]
+    profiles: [frontend-release, frontend-main]
     restart: unless-stopped
     volumes:
       - /app/node_modules

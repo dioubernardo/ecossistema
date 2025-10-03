@@ -4,9 +4,10 @@ services:
     image: nginx:alpine
     container_name: sistemas
     restart: unless-stopped
+    profiles: [develop, release, main]
+    hostname: sistemas.${DOMINIO:?}
     volumes:
       - ./src:/usr/share/nginx/html:ro
-    hostname: sistemas.${DOMINIO:?}
     labels:
       traefik.enable: true
       traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO:?}`)
