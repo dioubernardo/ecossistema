@@ -9,7 +9,7 @@ services:
     profiles: [frontend-develop]
     restart: unless-stopped
     volumes:
-      - ./app:/app
+      - ../../src/psvo:/app
       - /app/node_modules
     labels:
       traefik.enable: true
@@ -27,7 +27,7 @@ services:
     profiles: [manual]
     restart: no
     volumes:
-      - ./app:/app
+      - ../../src/psvo:/app
       - /app/node_modules
 
   psvo:

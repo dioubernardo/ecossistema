@@ -7,7 +7,7 @@ services:
     profiles: [develop, release, main]
     hostname: sistemas.${DOMINIO:?}
     volumes:
-      - ./src:/usr/share/nginx/html:ro
+      - ../../src/sistemas:/usr/share/nginx/html:ro
     labels:
       traefik.enable: true
       traefik.http.routers.sistemas.rule: Host(`sistemas.${DOMINIO:?}`)

@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     profiles: [ava]
     volumes:
-      - ./src:/usr/share/nginx/html:ro
+      - ../../src/ava:/usr/share/nginx/html:ro
     hostname: ava.${DOMINIO:?}
     labels:
       traefik.enable: true
