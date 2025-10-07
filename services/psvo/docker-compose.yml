@@ -33,8 +33,8 @@ services:
   psvo:
     container_name: psvo
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../../
+      dockerfile: ./services/psvo/Dockerfile
       target: ${TARGET:?}
     profiles: [frontend-release, frontend-main]
     restart: unless-stopped
