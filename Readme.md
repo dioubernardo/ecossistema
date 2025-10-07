@@ -6,18 +6,12 @@
 - ✓ Possibilidade de subir por blocos
 - ✓ Suporte a Single Page Application
 - ✓ HTTP3 (falta testar, mas está anuncionado)
-- Autoatualização
-- Autenticação centralizada
+- ✓ Autoatualização (carece testes profundos)
 - Logs
 
 # TODO
 
-- timezone
 - Permissão dos arquivos no autodeploy
-- testar branchs diferentes nas aplicações
-
-- pensar volumes vs imagens
-    - https://docs.docker.com/reference/compose-file/build/#additional_contexts
 
 # Instalação do servidor
 
