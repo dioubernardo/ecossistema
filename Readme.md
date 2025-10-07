@@ -2,7 +2,6 @@
 
 - ✓ Autocontido 
 - ✓ Desenvolvimento/Homologação/Produção juntos (faltam algumas definições)
-- ✓ Controle dos IPs (para o processo de transição mas pode ser descartado)
 - ✓ Controle dos certificados SSL automático 
 - ✓ Possibilidade de subir por blocos
 - ✓ Suporte a Single Page Application
@@ -66,7 +65,7 @@ sudo reboot
 
 Após clonar o repositorio base, utilizar .env.exemplo e acertar criar a pasta dos certificados
 ```
-cd ecosistema 
+cd ecossistema 
 copy .env.exemplo .env
 mkdir certs
 chmod 600 certs
