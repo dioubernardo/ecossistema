@@ -7,3 +7,5 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     profiles: [develop, release, main]
+    environment:
+      DOMINIO: ${DOMINIO:?}
