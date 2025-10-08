@@ -57,7 +57,7 @@ sudo reboot
 
 ## Configurações do ambiente
 
-Após clonar o repositorio base, utilizar .env.exemplo e acertar criar a pasta dos certificados
+Após clonar o repositorio base, utilizar .env.exemplo e criar a pasta dos certificados
 ```
 cd ecossistema 
 copy .env.exemplo .env
