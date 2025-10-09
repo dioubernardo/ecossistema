@@ -8,6 +8,7 @@
 - ✓ HTTP3 (falta testar, mas está anuncionado)
 - ✓ Autoatualização (carece testes profundos)
 - Logs
+- Monitoramento
 
 # TODO
 
