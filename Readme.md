@@ -61,7 +61,7 @@ sudo reboot
 ```
 git clone https://github.com/dioubernardo/ecossistema
 cd ecossistema 
-copy .env.exemplo .env
+cp .env.exemplo .env
 bash scripts/update.sh
 ```
 
