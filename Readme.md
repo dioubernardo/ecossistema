@@ -58,12 +58,11 @@ sudo reboot
 
 ## Configurações do ambiente
 
-Após clonar o repositorio base, utilizar .env.exemplo e criar a pasta dos certificados
 ```
+git clone https://github.com/dioubernardo/ecossistema
 cd ecossistema 
-git config core.hooksPath .git-hooks
 copy .env.exemplo .env
-scripts/update.sh
+bash scripts/update.sh
 ```
 
 ### Para desenvolvimento incluir no hosts

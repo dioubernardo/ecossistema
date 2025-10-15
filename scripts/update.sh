@@ -4,12 +4,19 @@ echo "Atualizando ambiente..."
 
 REPO_DIR="$(git rev-parse --show-toplevel)"
 
+cd $REPO_DIR
+
+# Configurando git-hooks
+git config core.hooksPath .git-hooks
+
+# Corrigindo permissões
+chmod +x .git-hooks/* scripts/*
+
 # Criando diretório certificados
-if [ ! -d "$REPO_DIR/certs" ]; then
-  mkdir "$REPO_DIR/certs"
-  chmod 600 "$REPO_DIR/certs"
+if [ ! -d certs ]; then
+  mkdir certs
+  chmod 600 certs
 fi
 
 # Gerando chaves do Vault
-bash "$REPO_DIR/scripts/vault.sh"
-
+scripts/vault.sh
