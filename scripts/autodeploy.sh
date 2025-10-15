@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$(dirname "$0")
+DIR=$(dirname "$(dirname "$0")")
 cd "$DIR"
 
 git config --global --add safe.directory "$DIR"
