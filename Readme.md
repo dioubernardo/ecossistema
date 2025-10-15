@@ -10,23 +10,18 @@
 - Logs
 - Monitoramento
 
-# TODO
-
-- Permissão dos arquivos no autodeploy
-
 # Instalação do servidor
 
 ## Ambiente de homologação/produção
 
 - Ubuntu 24.04 server com instalação minima (minimized) + ssh
 - Instalação extra Docker + ufw
-- IP: 192.168.3.220 (para subir multiplos ecosistemas precisa de mais de um IP)
 
 ## Ambiente de desenvolvimento
 
-- Pode ser WSL 2 quando Windows, apenas ativar o permissionamento 
+Pode ser Ubuntu ou WSL2
 
-Incluir em /etc/wsl.conf
+Quando WSL2 incluir em /etc/wsl.conf
 ```
 [automount]
 options = "metadata"
@@ -65,9 +60,9 @@ cp .env.exemplo .env
 bash scripts/update.sh
 ```
 
-### Para desenvolvimento incluir no hosts
+### Para desenvolvimento autorizar certificadora
 
-Após executar pela primeira vez será gerado um certificado (certs/rootCA.crt) que deve ser instalado no computador
+Após executar pela primeira vez será gerado um certificado (certs/rootCA.crt) que deve ser instalado
 
 - Linux: ```sudo cp certs/rootCA.crt /usr/local/share/ca-certificates/ && sudo update-ca-certificates```
 - Mac: ```sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain certs/rootCA.crt```
@@ -88,16 +83,14 @@ docker compose run --rm psvo-test
 # Autodeploy
 
 ```
-cd ecosistema 
-chmod +x autodeploy.sh
-
 sudo apt install cron
 sudo systemctl enable cron
 sudo systemctl start cron
 
-echo "*/5 * * * * root $(pwd)/autodeploy.sh >> /var/log/autodeploy.log 2>&1" | sudo tee -a /etc/crontab
+cd ecossistema
+echo "*/5 * * * * root $(pwd)/scripts/autodeploy.sh >> /var/log/autodeploy.log 2>&1" | sudo tee -a /etc/crontab
 ```
-Houve uma tentativa via container que estava OK porem com problema no docker compose up, por rodar no contexto do container e não no host https://github.com/dioubernardo/ecossistema/commit/2e50ef64cb617c7977cbcc2192770f75ab1f66bc
+Obs: Houve uma tentativa via container que estava OK porem com problema no docker compose up, por rodar no contexto do container e não no host https://github.com/dioubernardo/ecossistema/commit/2e50ef64cb617c7977cbcc2192770f75ab1f66bc
 
 ## Memórias
-- Tive que mexer no DNS do docker porque não estava rodando npm install
+- Tive que mexer no DNS do docker porque não estava rodando npm install no psvo
