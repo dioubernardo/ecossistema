@@ -61,9 +61,9 @@ sudo reboot
 Após clonar o repositorio base, utilizar .env.exemplo e criar a pasta dos certificados
 ```
 cd ecossistema 
+git config core.hooksPath .git-hooks
 copy .env.exemplo .env
-mkdir certs
-chmod 600 certs
+scripts/update.sh
 ```
 
 ### Para desenvolvimento incluir no hosts

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+REPO_DIR="$(git rev-parse --show-toplevel)"
+UPDATE_SCRIPT="$REPO_DIR/scripts/update.sh"
+bash "$UPDATE_SCRIPT"
